@@ -1,7 +1,8 @@
 UI/node_modules/
 UI/package-lock.json
-API/node_modules/
-API/package-lock.json
+
+./API/node_modules/
+./API/package-lock.json
 .idea/
 .vscode/
 UI/dist/
