@@ -1,0 +1,64 @@
+<div>
+    <div>
+          <form #contactForm="ngForm" (ngSubmit)="postContact()">
+          <div class="form-group">
+            <label for="username">Contact name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': name.touched && name.invalid }"
+              #name="ngModel"
+              [(ngModel)]="model.name"
+              required
+            />
+            <span class="invalid-feedback">please enter name</span>
+          </div>
+          <div class="form-group is-invalid">
+            <label for="password">Mobile number</label>
+            <input
+              type="tel"
+              name="mobile"
+              id="mobile"
+              #mobile="ngModel"
+              [ngClass]="{ 'is-invalid': mobile.touched && mobile.invalid }"
+              class="form-control"
+              [(ngModel)]="model.mobile"
+              required
+            />
+            <span class="invalid-feedback">please enter mobile number</span>
+          </div>
+         
+          <div>
+            <button class="btn btn-success btn-block" type="submit">
+              Add
+            </button>
+          </div>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <div>
+        <table class="table table-fluid bg-light" id="myTable">
+            <thead class="bg-secondary bg-gradient">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contacts; let i = index">
+                    <td>{{contact._id}}</td>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.mobile}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteContact(contact)">Delete</button>
+                    </td>
+                </tr>   
+            </tbody>
+        </table>
+    </div> 
+</div>

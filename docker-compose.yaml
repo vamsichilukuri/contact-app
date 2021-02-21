@@ -1,0 +1,33 @@
+version: "3"
+services:
+  angular-clients:
+    image: ui
+    ports:
+      - "4200:4200"
+    stdin_open: true
+    networks:
+      - mean-app
+
+  express-client:
+    build: API
+    ports:
+      - "3002:3002"
+    depends_on:
+      - database
+    networks:
+      - mean-app
+
+  database:
+    image: mongo
+    command: mongod --port 27018
+    ports:
+      - "27018:27017"
+    networks:
+      - mean-app
+
+networks:
+  mean-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
