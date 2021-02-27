@@ -23,7 +23,7 @@ services:
     ports:
       - "27018:27017"
     networks:
-      - mean-app
+      - mean-app:/data/db
 
 networks:
   mean-app:
